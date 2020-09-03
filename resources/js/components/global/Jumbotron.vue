@@ -2,14 +2,18 @@
   <div class="jumbotron-asol">
     <div class="jumbotron-image" :style="{ 'background-image': 'url(' + image + ')' }">
       <div :class="(overlay ? 'overlay' :'over-non')">
-        <h3 class="page-title">{{ pageTitle }}</h3>
-        <ul class="breadcrumb-asol list-unstyled">
-          <router-link to="/" exact tag="li">
-            <a>الرئيسية</a>
-            <span class="icon-arrow-left"></span>
-          </router-link>
-          <li class="active">{{ pageTitle }}</li>
-        </ul>
+        <div v-if="breadcrumb">
+          <h3 class="page-title">{{ pageTitle }}</h3>
+          <ul class="breadcrumb-asol list-unstyled">
+            <router-link to="/" exact tag="li">
+              <a>الرئيسية</a>
+              &nbsp;
+              &gt;
+              &nbsp;
+            </router-link>
+            <li class="active">{{ pageTitle }}</li>
+          </ul>
+        </div>
         <a @click.prevent="$router.go(-1)" href="#" class="back-btn">
           <span class="icon-arrow-left"></span>
         </a>
@@ -22,20 +26,46 @@
         <span class="number">0102-5152-421</span>
       </a>
     </div>
+    <div class="breadcrumb-2" v-if="!breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb-asol list-unstyled">
+          <router-link to="/" exact tag="li">
+            <a>الرئيسية</a>
+            &nbsp;
+            &gt;
+            &nbsp;
+          </router-link>
+          <li>{{fullpath }}</li>
+
+          <li class="active">{{ this.$route.meta.title }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "jumbotron",
+  computed: {
+    fullpath() {
+      let path = this.$route.params.permalink.replace("-", " ");
+
+      return path;
+    },
+  },
   props: {
     image: String,
     pageTitle: String,
+    breadcrumb: {
+      type: Boolean,
+      default: true,
+    },
     overlay: {
       type: Boolean,
-      default: true
-    }
-  }
+      default: true,
+    },
+  },
 };
 </script>
 

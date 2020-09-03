@@ -93,7 +93,7 @@ export default {
           image: "/img/project_01.png",
           category: "web-design",
           id: uuid.v4(),
-          link: "#"
+          link: "/works/web-design"
         },
         {
           title: "لوريم إيبسوم ولايزال المعيار للنص",

@@ -1,6 +1,7 @@
 import Home from "./views/home/Home.vue";
 import About from "./views/about/About.vue";
 import Works from "./views/works/Works.vue";
+import SingleWorks from "./views/works/SingleWorks.vue";
 import Clients from "./views/clients/Clients.vue";
 import Blog from "./views/blog/Blog.vue";
 import Contact from "./views/contact/Contact.vue";
@@ -38,6 +39,15 @@ const routes = [
         component: Works,
         meta: {
             title: "Works Page"
+        },
+    
+    },
+    {
+        path: "/Works/:permalink",
+        name: "SingleWorks",
+        component: SingleWorks,
+        meta: {
+            title: "Single Works Page"
         }
     },
     {
