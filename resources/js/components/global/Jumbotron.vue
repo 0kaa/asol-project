@@ -34,9 +34,7 @@
             &nbsp;
             &gt;
             &nbsp;
-          </router-link>
-          <li>{{fullpath }}</li>
-
+          </router-link>          
           <li class="active">{{ this.$route.meta.title }}</li>
         </ul>
       </div>
@@ -47,13 +45,6 @@
 <script>
 export default {
   name: "jumbotron",
-  computed: {
-    fullpath() {
-      let path = this.$route.params.permalink.replace("-", " ");
-
-      return path;
-    },
-  },
   props: {
     image: String,
     pageTitle: String,

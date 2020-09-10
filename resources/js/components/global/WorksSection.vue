@@ -33,13 +33,13 @@
 
       <transition-group class="projects row" tag="div" name="projects">
         <div class="project col-lg-4 col-sm-6" v-for="project in projectItems" :key="project.id">
-          <a class="project-wrapper" :href="project.link">
+          <router-link class="project-wrapper" :to="project.link">
             <img class="img-fluid project-image" v-bind:src="project.image" />
             <h4 class="project-title">
               {{ project.title }}
               <span class="icon-arrow-left"></span>
             </h4>
-          </a>
+          </router-link>
         </div>
       </transition-group>
 
